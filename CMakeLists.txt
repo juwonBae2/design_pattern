@@ -188,4 +188,4 @@ function(add_subdirectory_with_static_analysis TARGET_NAME)
 endfunction()
 
 # add subdirectories
-add_subdirectory_with_static_analysis(sample)
+add_subdirectory_with_static_analysis(factory_pattern)

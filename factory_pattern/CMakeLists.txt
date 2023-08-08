@@ -1,7 +1,7 @@
-project(sample)
+project(factory_pattern)
 
 add_executable(${PROJECT_NAME}
-    src/string_implementation.cpp
+    src/factory_pattern.cpp
 )
 
 target_link_libraries(${PROJECT_NAME}
