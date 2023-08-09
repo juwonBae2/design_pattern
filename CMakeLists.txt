@@ -10,24 +10,6 @@ else()
   message(STATUS "CCache Not Found")
 endif()
 
-# CMAKE_BUILD_TYPE 관련 옵션은 g++ 기본 설정을 따름
-# Default: None
-# Debug: -g (본 프로젝트의 기본 옵션)
-# Release -O3 DNDEBUG
-# MinSizeRel: -Os DNDEBUG
-# RelWithDebInfo: -O2 -g DNDEBUG
-
-# 모듈 패스 설정
-set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/module" ${CMAKE_MODULE_PATH})
-message(STATUS "${CMAKE_MODULE_PATH}")
-
-# 프로젝트 이름과 몇가지 유용한 설정
-project(playground VERSION 1.0.0
-                   DESCRIPTION "V2X Playground"
-                   LANGUAGES C CXX)
-
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON) # LSP support
-
 # 별도 build 폴더가 아닌 경우 cmake 할 수 없도록 방지
 file(TO_CMAKE_PATH "${PROJECT_BINARY_DIR}/CMakeLists.txt" LOC_PATH)
 if(EXISTS "${LOC_PATH}")
