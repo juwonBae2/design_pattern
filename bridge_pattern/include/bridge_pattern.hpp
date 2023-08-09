@@ -22,7 +22,7 @@ public:
     bool isEnabled() override
     {
         // TV의 상태 확인
-        return true;
+        return false;
     }
 
     void enable() override
@@ -66,7 +66,7 @@ public:
     bool isEnabled() override
     {
         // Radio의 상태 확인
-        return true;
+        return false;
     }
 
     void enable() override

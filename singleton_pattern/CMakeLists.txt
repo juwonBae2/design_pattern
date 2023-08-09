@@ -1,7 +1,7 @@
-project(factory_pattern)
+project(singleton_pattern)
 
 add_executable(${PROJECT_NAME}
-    src/factory_pattern.cpp
+    src/singleton_pattern.cpp
     src/main.cpp
 )
 
