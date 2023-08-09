@@ -3,7 +3,6 @@
 // Button 인터페이스
 class Button {
 public:
-    virtual ~Button();
     virtual void paint() const = 0;
 };
 
