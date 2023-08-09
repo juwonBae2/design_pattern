@@ -189,3 +189,4 @@ endfunction()
 
 # add subdirectories
 add_subdirectory_with_static_analysis(factory_pattern)
+add_subdirectory_with_static_analysis(bridge_pattern)

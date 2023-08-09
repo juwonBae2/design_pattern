@@ -1,0 +1,40 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "C/C++: clang++ build active file",
+            "command": "/usr/bin/clang++",
+            "args": [
+                "-std=c++17",
+                "-stdlib=libc++",
+                "-g",
+                "${fileDirname}/*.cpp",
+                // SFML dependency including begin
+                "-I/opt/homebrew/Cellar/sfml/2.5.1_2/include",
+                "-L/opt/homebrew/Cellar/sfml/2.5.1_2/lib",
+                "-lsfml-window",
+                "-lsfml-system",
+                "-lsfml-graphics",
+                // SFML dependency including end
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}",
+            ],
+            "options": {
+                // "cwd": "${workspaceFolder}"
+                "cwd": "/usr/bin"
+            },
+            "problemMatcher": {
+                "base": "$gcc",
+                "fileLocation": "absolute",
+            },
+            "group": "build"
+        },
+        {
+            "label": "Open Terminal",
+            "type": "shell",
+            "command": "osascript -e 'tell application \"Terminal\"\ndo script \"echo hello\"\nend tell'",
+            "problemMatcher": []
+        }
+    ]
+}
