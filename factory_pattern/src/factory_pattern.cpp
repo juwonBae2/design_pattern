@@ -1,4 +1,3 @@
-#include <iostream>
 #include "factory_pattern.hpp"
 
 void WinButton::paint() const

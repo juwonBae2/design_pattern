@@ -22,40 +22,7 @@ if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS 1.0.0)
   message(STATUS "Detected alternative compiler. Fixing version to ${CMAKE_CXX_COMPILER_VERSION}, which is minimum requirement")
 endif()
 
-# 메인 프로젝트일 때만 다음을 수행
-# 컴파일 옵션 등, 의존성에도 적용될 수 있는 설정만 할 것
-if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
-  # 이곳에서 메인 프로젝트일때 한정 옵션 변수 설정
-  set(CMAKE_CXX_STANDARD 14 CACHE STRING "The C++ standard to use")
-  set(CMAKE_C_STANDARD 11 CACHE STRING "The C standard to use")
-  set(CMAKE_CXX_STANDARD_REQUIRED ON)
-  set(CMAKE_CXX_EXTENSIONS OFF) # -std=c++xx를 사용 (-std=g++xx 대신)
-
-  # 기본 빌드 타입 설정 (설정되어 있지 않은 경우 Debug로 빌드)
-  set(default_build_type "Debug")
-  if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
-    message(STATUS "Setting build type to '${default_build_type}' as none was specified.")
-    set(CMAKE_BUILD_TYPE "${default_build_type}" CACHE
-        STRING "Choose the type of build." FORCE)
-    # Set the possible values of build type for cmake-gui
-    set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS
-      "Debug" "Release" "MinSizeRel" "RelWithDebInfo")
-  endif()
-
-  if(${CMAKE_BUILD_TYPE} MATCHES "[Dd]ebug")
-    ADD_DEFINITIONS(-DDEBUG)
-  endif()
-
-  message(STATUS "CMAKE_BUILD_TYPE: ${CMAKE_BUILD_TYPE}")
-  message(STATUS "CMAKE_CONFIGURATION_TYPES: ${CMAKE_CONFIGURATION_TYPES}")
-
-  # IDE에서 folder 지원
-  set_property(GLOBAL PROPERTY USE_FOLDERS ON)
-endif()
-
-##################
-# 의존성 가져오기 #
-##################
+# 의존성 가져오기
 include(FetchContent)
 FetchContent_Declare(json
   GIT_REPOSITORY https://github.com/nlohmann/json.git
@@ -120,7 +87,6 @@ if(NOT cxxopts_POPULATED)
   add_subdirectory(${cxxopts_SOURCE_DIR} ${cxxopts_BINARY_DIR} EXCLUDE_FROM_ALL)
 endif()
 
-# TODO(jwbae): SFML 의존성
 FetchContent_Declare(
   sfml
   GIT_REPOSITORY https://github.com/SFML/SFML.git
@@ -133,13 +99,8 @@ if(NOT sfml_POPULATED)
   add_subdirectory(${sfml_SOURCE_DIR} ${sfml_BINARY_DIR} EXCLUDE_FROM_ALL)
 endif()
 
-
-#####################
-# 의존성 가져오기 끝 #
-#####################
-
+# clang-tidy를 통해 정적 분석 수행
 if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
-  # clang-tidy를 통해 정적 분석 수행
   option(CLANG_TIDY_FIX "Perform fixes for Clang-Tidy" OFF)
   find_program(
     CLANG_TIDY_EXE
@@ -174,3 +135,6 @@ add_subdirectory_with_static_analysis(factory_pattern)
 add_subdirectory_with_static_analysis(bridge_pattern)
 add_subdirectory_with_static_analysis(singleton_pattern)
 add_subdirectory_with_static_analysis(abstract_factory_pattern)
+add_subdirectory_with_static_analysis(command_pattern)
+add_subdirectory_with_static_analysis(mediator_pattern)
+add_subdirectory_with_static_analysis(memento_pattern)
