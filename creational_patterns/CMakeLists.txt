@@ -1,0 +1,7 @@
+project(creational_patterns)
+
+add_subdirectory(abstract_factory_pattern)
+add_subdirectory(builder_pattern)
+add_subdirectory(factory_pattern)
+add_subdirectory(prototype_pattern)
+add_subdirectory(singleton_pattern)

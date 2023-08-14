@@ -22,9 +22,9 @@ public:
         this->date_ = std::ctime(&now);
     };
 
-    std::string state() const override{};
-    std::string getName() const override{};
-    std::string date() const override{};
+    std::string state() const override;
+    std::string getName() const override;
+    std::string date() const override;
 
 private:
     std::string state_;
@@ -48,5 +48,5 @@ public:
 
 private:
     std::string state_;
-    std::string generateRandomString(int length){};
+    std::string generateRandomString(int length);
 };

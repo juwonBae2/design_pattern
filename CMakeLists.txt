@@ -131,10 +131,8 @@ function(add_subdirectory_with_static_analysis TARGET_NAME)
 endfunction()
 
 # add subdirectories
-add_subdirectory_with_static_analysis(factory_pattern)
-add_subdirectory_with_static_analysis(bridge_pattern)
-add_subdirectory_with_static_analysis(singleton_pattern)
-add_subdirectory_with_static_analysis(abstract_factory_pattern)
-add_subdirectory_with_static_analysis(command_pattern)
-add_subdirectory_with_static_analysis(mediator_pattern)
-add_subdirectory_with_static_analysis(memento_pattern)
+project(DesignPatterns)
+
+add_subdirectory(creational_patterns)
+add_subdirectory(structural_patterns)
+add_subdirectory(behavioral_patterns)
