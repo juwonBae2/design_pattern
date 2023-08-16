@@ -23,7 +23,7 @@ public:
     void paint() const override;
 };
 
-// Check box
+// Check box (Application엔 아직 추가 x)
 class Checkbox
 {
 public:
@@ -43,6 +43,7 @@ public:
     void paint() const override;
 };
 
+// GUI factory
 class GUIFactory
 {
 public:
@@ -65,6 +66,7 @@ public:
     Checkbox *createCheckbox() const override;
 };
 
+// Application.. 코드 분리 해야 됨
 class Application
 {
 private:

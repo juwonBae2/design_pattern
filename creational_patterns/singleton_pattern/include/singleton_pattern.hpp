@@ -1,18 +1,32 @@
 #pragma once
 
+#include <string>
 #include <iostream>
+#include <mutex>
 
-class Singleton
+class ConfigurationManager
 {
-private:
-    // 정적 멤버 변수로 유일한 인스턴스를 저장
-    static Singleton *instance;
+protected:
+    ConfigurationManager(const std::string value) : value_(value) {}
 
-    Singleton() {}
-    Singleton(const Singleton &) {}
+    static ConfigurationManager *instance_;
+    static std::mutex mutex_;
+
+    std::string value_;
 
 public:
-    // 정적 메서드를 통해 인스턴스에 접근
-    static Singleton *getInstance();
-    void showMessage();
+    ConfigurationManager(ConfigurationManager &other) = delete;
+    void operator=(const ConfigurationManager &) = delete;
+
+    static ConfigurationManager *GetInstance(const std::string &value);
+
+    void PerformAction(const std::string &action)
+    {
+        std::cout << "Performing " << action << " using the ConfigurationManager with value: " << value_ << std::endl;
+    }
+
+    std::string GetValue() const
+    {
+        return value_;
+    }
 };

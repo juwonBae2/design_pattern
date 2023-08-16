@@ -1,139 +1,75 @@
 #include <iostream>
 
-// '구현' 인터페이스
+// Device 구현 인터페이스
 class Device
 {
 public:
-    virtual ~Device(){};
-
-    virtual bool isEnabled() = 0;
-    virtual void enable() = 0;
-    virtual void disable() = 0;
-    virtual int getVolume() = 0;
-    virtual void setVolume(int percent) = 0;
-    virtual int getChannel() = 0;
-    virtual void setChannel(int channel) = 0;
+    virtual void turnOn() = 0;
+    virtual void turnOff() = 0;
 };
 
 // 구현 클래스들
-class Tv : public Device
+class TVDevice : public Device
 {
 public:
-    bool isEnabled() override
+    void turnOn() override
     {
-        // TV의 상태 확인
-        return false;
+        std::cout << "TV is turned on" << std::endl;
     }
 
-    void enable() override
+    void turnOff() override
     {
-        // TV 켜기
-    }
-
-    void disable() override
-    {
-        // TV 끄기
-    }
-
-    int getVolume() override
-    {
-        // 볼륨 가져오기
-        return 0;
-    }
-
-    void setVolume(int percent) override
-    {
-        // 볼륨 설정
-    }
-
-    int getChannel() override
-    {
-        // 채널 가져오기
-        return 0;
-    }
-
-    void setChannel(int channel) override
-    {
-        // 채널 설정
+        std::cout << "TV is turned off" << std::endl;
     }
 };
 
-class Radio : public Device
+class RadioDevice : public Device
 {
 public:
-    // Radio의 구현은 위와 유사하게 작성
-
-    bool isEnabled() override
+    void turnOn() override
     {
-        // Radio의 상태 확인
-        return false;
+        std::cout << "Radio is turned on" << std::endl;
     }
 
-    void enable() override
+    void turnOff() override
     {
-        // Radio 켜기
-    }
-
-    void disable() override
-    {
-        // Radio 끄기
-    }
-
-    int getVolume() override
-    {
-        // 볼륨 가져오기
-        return 0;
-    }
-
-    void setVolume(int percent) override
-    {
-        // 볼륨 설정
-    }
-
-    int getChannel() override
-    {
-        // 채널 가져오기
-        return 0;
-    }
-
-    void setChannel(int channel) override
-    {
-        // 채널 설정
+        std::cout << "Radio is turned off" << std::endl;
     }
 };
 
-// '추상화' 클래스
+// RemoteControl 추상화 클래스
 class RemoteControl
 {
 protected:
     Device *device;
 
 public:
-    RemoteControl(Device *device) : device(device) {}
+    RemoteControl(Device *dev) : device(dev) {}
 
-    void togglePower()
-    {
-        if (device->isEnabled())
-        {
-            device->disable();
-        }
-        else
-        {
-            device->enable();
-        }
-    }
-
-    // 다른 메서드들도 유사하게 작성
+    virtual void pressButton() = 0;
 };
 
-// '추상화' 클래스 확장
-class AdvancedRemoteControl : public RemoteControl
+// RemoteControl의 확장 클래스들
+class SmartRemoteControl : public RemoteControl
 {
 public:
-    AdvancedRemoteControl(Device *device) : RemoteControl(device) {}
+    SmartRemoteControl(Device *dev) : RemoteControl(dev) {}
 
-    void mute()
+    void pressButton() override
     {
-        device->setVolume(0);
+        std::cout << "Smart Remote Control is pressed -> ";
+        device->turnOn();
+    }
+};
+
+class BasicRemoteControl : public RemoteControl
+{
+public:
+    BasicRemoteControl(Device *dev) : RemoteControl(dev) {}
+
+    void pressButton() override
+    {
+        std::cout << "Basic Remote Control is pressed -> ";
+        device->turnOn();
     }
 };

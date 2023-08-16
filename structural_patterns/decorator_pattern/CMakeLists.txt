@@ -1,21 +1,17 @@
 cmake_minimum_required(VERSION 3.12)
 
-project(builder_pattern)
+project(decorator_pattern)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-add_executable(${PROJECT_NAME}
-    src/builder_pattern.cpp
-    src/main.cpp
-)
+file(GLOB_RECURSE SOURCES "src/*.cpp")
+
+add_executable(${PROJECT_NAME} ${SOURCES})
 
 target_include_directories(${PROJECT_NAME}
-  PRIVATE
-    include
-    ${PROJECT_BINARY_DIR}/include
-    ${PROJECT_BINARY_DIR}/src
+    PRIVATE include
 )
 
 target_link_libraries(${PROJECT_NAME}

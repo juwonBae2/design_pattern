@@ -1,17 +1,17 @@
 #include "singleton_pattern.hpp"
 
-Singleton *Singleton::instance = nullptr;
+ConfigurationManager *ConfigurationManager::instance_ = nullptr;
+std::mutex ConfigurationManager::mutex_;
 
-Singleton *Singleton::getInstance()
+ConfigurationManager *ConfigurationManager::GetInstance(const std::string &value)
 {
-    if (instance == nullptr)
+    if (instance_ == nullptr)
     {
-        instance = new Singleton();
+        std::lock_guard<std::mutex> lock(mutex_);
+        if (instance_ == nullptr)
+        {
+            instance_ = new ConfigurationManager(value);
+        }
     }
-    return instance;
-}
-
-void Singleton::showMessage()
-{
-    std::cout << "Hello, I am the Singleton!" << std::endl;
+    return instance_;
 }

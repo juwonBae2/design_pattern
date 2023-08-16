@@ -1,21 +1,18 @@
 #include "singleton_pattern.hpp"
+#include <thread>
+
+void ThreadFunction(const std::string &threadName)
+{
+    ConfigurationManager *configManager = ConfigurationManager::GetInstance(threadName);
+    configManager->PerformAction("action in thread " + threadName);
+}
 
 int main()
 {
-    Singleton *singletonInstance = Singleton::getInstance();
-    singletonInstance->showMessage();
-
-    Singleton *anotherInstance = Singleton::getInstance();
-    anotherInstance->showMessage();
-
-    if (singletonInstance == anotherInstance)
-    {
-        std::cout << "Both pointers point to the same instance." << std::endl;
-    }
-    else
-    {
-        std::cout << "Pointers point to different instances (this should not happen in a Singleton)." << std::endl;
-    }
+    std::thread t1(ThreadFunction, "Thread X");
+    std::thread t2(ThreadFunction, "Thread Y");
+    t1.join();
+    t2.join();
 
     return 0;
 }

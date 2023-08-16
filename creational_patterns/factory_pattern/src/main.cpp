@@ -2,15 +2,18 @@
 
 int main()
 {
-    std::cout << "App: Launched with the ConcreteCreator1.\n";
-    Creator *creator = new ConcreteCreator1();
-    ClientCode(*creator);
-    std::cout << std::endl;
-    std::cout << "App: Launched with the ConcreteCreator2.\n";
-    Creator *creator2 = new ConcreteCreator2();
-    ClientCode(*creator2);
+    ShapeFactory *circleFactory = new CircleFactory();
+    Shape *circle = circleFactory->createShape();
+    circle->draw();
 
-    delete creator;
-    delete creator2;
+    ShapeFactory *rectangleFactory = new RectangleFactory();
+    Shape *rectangle = rectangleFactory->createShape();
+    rectangle->draw();
+
+    delete circleFactory;
+    delete circle;
+    delete rectangleFactory;
+    delete rectangle;
+
     return 0;
 }
