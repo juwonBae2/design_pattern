@@ -118,6 +118,7 @@
         "utility": "cpp",
         "__verbose_abort": "cpp",
         "bit": "cpp",
-        "*.def": "cpp"
+        "*.def": "cpp",
+        "filesystem": "cpp"
     }
 }

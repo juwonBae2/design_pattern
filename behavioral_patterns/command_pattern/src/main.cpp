@@ -3,7 +3,7 @@
 int main()
 {
     Invoker *invoker = new Invoker;
-    invoker->setOnStart(new SimpleCommand("Hello world!"));
+    invoker->setOnStart(new SimpleCommand("Hello!"));
 
     Receiver *receiver = new Receiver;
     invoker->setOnFinish(new ComplexCommand(receiver, "Send email", "Save report"));

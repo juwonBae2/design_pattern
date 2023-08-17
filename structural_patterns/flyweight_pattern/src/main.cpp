@@ -23,17 +23,17 @@ int main()
     // 차량 정보를 데이터베이스에 추가
     AddCarToPoliceDatabase(*factory,
                            "CL234IR",
-                           "James Doe",
+                           "Juwon Bae",
                            "BMW",
                            "M5",
                            "red");
 
     AddCarToPoliceDatabase(*factory,
                            "CL234IR",
-                           "James Doe",
+                           "Naseong Boo",
                            "BMW",
                            "X1",
-                           "red");
+                           "black");
     factory->ListFlyweights();
     delete factory;
 
