@@ -4,14 +4,14 @@
 class Component
 {
 public:
-    virtual ~Component(){};
+    virtual ~Component() {}
     virtual void print(int) = 0;
 };
 
 class Directory : public Component
 {
 public:
-    Directory(std::string id) : m_id_(id){};
+    Directory(std::string id) : m_id_(id) {}
 
     void add(Component *input)
     {
@@ -38,7 +38,7 @@ private:
 class File : public Component
 {
 public:
-    File(std::string id) : m_id_(id){};
+    File(std::string id) : m_id_(id) {}
 
     void print(int tap = 0) override
     {

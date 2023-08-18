@@ -131,7 +131,7 @@ function(add_subdirectory_with_static_analysis TARGET_NAME)
 endfunction()
 
 # add subdirectories
-project(DesignPatterns)
+# project(DesignPatterns)
 
 add_subdirectory(creational_patterns)
 add_subdirectory(structural_patterns)

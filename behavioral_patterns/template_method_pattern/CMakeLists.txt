@@ -8,10 +8,17 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 file(GLOB_RECURSE SOURCES "src/*.cpp")
 
-add_executable(${PROJECT_NAME} ${SOURCES})
-
-target_include_directories(${PROJECT_NAME} PRIVATE include)
-
+add_executable(${PROJECT_NAME}
+    # src/template_method_pattern.cpp
+    src/main.cpp
+)
+target_include_directories(${PROJECT_NAME}
+  PUBLIC
+    include
+    ${PROJECT_BINARY_DIR}/include
+  PRIVATE
+    ${PROJECT_BINARY_DIR}/src
+)
 target_link_libraries(${PROJECT_NAME}
     PRIVATE
         spdlog::spdlog

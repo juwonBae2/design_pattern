@@ -22,7 +22,7 @@ class RectangleInterface
 {
 public:
     virtual void Draw() = 0;
-    virtual ~RectangleInterface(){};
+    virtual ~RectangleInterface() {}
 };
 
 // 어댑터 클래스

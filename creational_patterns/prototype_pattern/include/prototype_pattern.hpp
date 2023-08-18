@@ -6,7 +6,7 @@ class EnemyPrototype
 public:
     virtual EnemyPrototype *clone() = 0;
     virtual void display() = 0;
-    virtual ~EnemyPrototype(){};
+    virtual ~EnemyPrototype() {}
 };
 
 class Goblin : public EnemyPrototype

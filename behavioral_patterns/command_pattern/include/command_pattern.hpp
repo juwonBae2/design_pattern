@@ -6,14 +6,14 @@
 class Command
 {
 public:
-    virtual ~Command(){};
+    virtual ~Command() {}
     virtual void execute() const = 0;
 };
 
 class SimpleCommand : public Command
 {
 public:
-    explicit SimpleCommand(std::string pay_load) : pay_load_(pay_load){};
+    explicit SimpleCommand(std::string pay_load) : pay_load_(pay_load) {}
 
     void execute() const override;
 
@@ -31,7 +31,7 @@ public:
 class ComplexCommand : public Command
 {
 public:
-    ComplexCommand(Receiver *receiver, std::string a, std::string b) : receiver_(receiver), a_(a), b_(b){};
+    ComplexCommand(Receiver *receiver, std::string a, std::string b) : receiver_(receiver), a_(a), b_(b) {}
 
     void execute() const override;
 

@@ -26,7 +26,7 @@ public:
     virtual void BuildRAM() = 0;
     virtual Computer *GetComputer() = 0;
 
-    virtual ~ComputerBuilder(){};
+    virtual ~ComputerBuilder() {}
 };
 
 // Concrete Builder

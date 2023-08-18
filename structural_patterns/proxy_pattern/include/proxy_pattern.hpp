@@ -4,14 +4,14 @@
 
 #include <iostream>
 
-// Subject 인터페이스
+// Subject interface
 class Subject
 {
 public:
     virtual void request() const = 0;
 };
 
-// RealSubject 클래스
+// RealSubject class
 class RealSubject : public Subject
 {
 public:
@@ -21,7 +21,7 @@ public:
     }
 };
 
-// Proxy 클래스
+// Proxy class
 class Proxy : public Subject
 {
 private:
@@ -39,7 +39,7 @@ private:
     }
 
 public:
-    Proxy(RealSubject *real_subject) : real_subject_(real_subject){};
+    Proxy(RealSubject *real_subject) : real_subject_(real_subject) {}
 
     void request() const override
     {
