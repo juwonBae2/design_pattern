@@ -1,4 +1,5 @@
 #include "factory_pattern.hpp"
+#include "factory_pattern2.hpp"
 
 int main()
 {
@@ -14,6 +15,18 @@ int main()
     delete circle;
     delete rectangleFactory;
     delete rectangle;
+
+    std::cout << "\n"
+              << std::endl;
+
+    // factory_pattern2
+    Store store;
+
+    std::unique_ptr<Beverage> coffee = store.GetDrink("Coffee");
+    std::unique_ptr<Beverage> tea = store.GetDrink("Tea");
+
+    coffee->Prepare();
+    tea->Prepare();
 
     return 0;
 }
