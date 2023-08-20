@@ -11,10 +11,6 @@ public:
 
 class Goblin : public EnemyPrototype
 {
-private:
-    std::string type;
-    int health;
-
 public:
     Goblin() : type("Goblin"), health(100) {}
 
@@ -27,14 +23,14 @@ public:
     {
         std::cout << "Goblin - Type: " << type << ", Health: " << health << std::endl;
     }
+
+private:
+    std::string type;
+    int health;
 };
 
 class Orc : public EnemyPrototype
 {
-private:
-    std::string type;
-    int health;
-
 public:
     Orc() : type("Orc"), health(150) {}
 
@@ -47,4 +43,8 @@ public:
     {
         std::cout << "Orc - Type: " << type << ", Health: " << health << std::endl;
     }
+
+private:
+    std::string type;
+    int health;
 };

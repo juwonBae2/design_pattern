@@ -2,9 +2,14 @@
 
 int main()
 {
-    RectangleInterface *rectangle = new RectangleAdapter(10, 20, 30, 40);
-    rectangle->Draw();
+    Client client;
 
-    delete rectangle;
+    LegacyRectangle legacyRectangle(10, 20, 30, 40);
+
+    RectangleAdapter adapter(10, 20, 20, 30);
+
+    client.Run(&adapter);
+    client.Run(&legacyRectangle);
+
     return 0;
 }

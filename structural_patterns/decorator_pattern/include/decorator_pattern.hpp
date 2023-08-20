@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>
 
-// 컴포넌트
+// 1.Component
 class Coffee
 {
 public:
@@ -12,7 +12,7 @@ public:
     virtual std::string getDescription() const = 0;
 };
 
-// 구상 컴포넌트
+// 2.Concrete Component
 class BasicCoffee : public Coffee
 {
 public:
@@ -27,7 +27,7 @@ public:
     }
 };
 
-// 기초 데코레이터
+// 3.Base Decorator
 class CoffeeDecorator : public Coffee
 {
 protected:
@@ -39,7 +39,7 @@ public:
     std::string getDescription() const override = 0;
 };
 
-// 구상 데코레이터
+// 4.Concrete Decorators
 class MilkDecorator : public CoffeeDecorator
 {
 public:
@@ -56,6 +56,7 @@ public:
     }
 };
 
+// 4.Concrete Decorators
 class SugarDecorator : public CoffeeDecorator
 {
 public:

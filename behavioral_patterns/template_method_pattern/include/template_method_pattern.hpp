@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 
-// 추상 기초 클래스 (AbstractClass)
+// 1.AbstractClass
 class BaseAI
 {
 public:
@@ -13,15 +13,14 @@ public:
         GatherResources();
         BuildStructures();
         AttackEnemies();
-        // 기타 공통 동작 수행
     }
 
-    // 추상 메서드들
     virtual void GatherResources() = 0;
     virtual void BuildStructures() = 0;
     virtual void AttackEnemies() = 0;
 };
 
+// 2. ConcreteClass
 // 오크 종족의 인공지능 클래스
 class OrcAI : public BaseAI
 {
@@ -42,6 +41,7 @@ public:
     }
 };
 
+// 2. ConcreteClass
 // 인간 종족의 인공지능 클래스
 class HumanAI : public BaseAI
 {
@@ -62,6 +62,7 @@ public:
     }
 };
 
+// 2. ConcreteClass
 // 몬스터 종족의 인공지능 클래스
 class MonsterAI : public BaseAI
 {

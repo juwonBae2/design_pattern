@@ -3,6 +3,7 @@
 
 int main()
 {
+    // factory_pattern1
     ShapeFactory *circleFactory = new CircleFactory();
     Shape *circle = circleFactory->createShape();
     circle->draw();
@@ -19,6 +20,7 @@ int main()
     std::cout << "\n"
               << std::endl;
 
+    // main
     // factory_pattern2
     Store store;
 

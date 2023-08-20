@@ -3,6 +3,7 @@
 #include <iostream>
 #include "spdlog/fmt/fmt.h"
 
+// 2.Command
 class Command
 {
 public:
@@ -10,6 +11,7 @@ public:
     virtual void execute() const = 0;
 };
 
+// 3.Concrete Command
 class SimpleCommand : public Command
 {
 public:
@@ -21,6 +23,7 @@ private:
     std::string pay_load_;
 };
 
+// 4.Receiver
 class Receiver
 {
 public:
@@ -28,6 +31,7 @@ public:
     void doSomtingElse(const std::string &b);
 };
 
+// Concrete Command
 class ComplexCommand : public Command
 {
 public:
@@ -42,6 +46,7 @@ private:
     std::string b_;
 };
 
+// 1.Invoker
 class Invoker
 {
 public:

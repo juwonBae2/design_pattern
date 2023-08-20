@@ -1,5 +1,6 @@
 #include <iostream>
 
+// 2.Memento
 class Memento
 {
 public:
@@ -8,7 +9,7 @@ public:
     virtual std::string date() const = 0;
     virtual std::string state() const = 0;
 };
-
+// 2.Concrete Memento
 class ConcreteMemento : public Memento
 {
 public:
@@ -38,6 +39,7 @@ private:
     std::string date_;
 };
 
+// 1.Originator
 class Originator
 {
 
@@ -46,11 +48,16 @@ private:
 
     std::string GenerateRandomString(int length = 10)
     {
-        const char alphanum[] =
-            "0123456789"
-            "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-            "abcdefghijklmnopqrstuvwxyz";
-        int stringLength = sizeof(alphanum) - 1;
+        const std::array<char, 62> alphanum = {
+            '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
+            'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
+            'U', 'V', 'W', 'X', 'Y', 'Z',
+            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
+            'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
+            'u', 'v', 'w', 'x', 'y', 'z'};
+
+        int stringLength = alphanum.size();
 
         std::string random_string;
         for (int i = 0; i < length; i++)
@@ -85,23 +92,21 @@ public:
     }
 };
 
+// 3.Caretaker
 class Caretaker
 {
-
 private:
     std::vector<Memento *> mementos_;
-
     Originator *originator_;
 
 public:
-    Caretaker(Originator *originator) : originator_(originator)
-    {
-    }
-
+    Caretaker(Originator *originator) : originator_(originator) {}
     ~Caretaker()
     {
         for (auto m : mementos_)
+        {
             delete m;
+        }
     }
 
     void Backup()

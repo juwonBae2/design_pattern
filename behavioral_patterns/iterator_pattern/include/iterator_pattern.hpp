@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 
+// 1.Iterator, 2.Concrete Iterator
 template <typename T, typename U>
 class Iterator
 {
@@ -39,6 +40,7 @@ private:
     iter_type m_it_;
 };
 
+// 3.Iterable Collection
 template <class T>
 class Container
 {
@@ -50,6 +52,7 @@ public:
         m_data_.push_back(a);
     }
 
+    // 3.Concrete Collection
     Iterator<T, Container> *CreateIterator()
     {
         return new Iterator<T, Container>(this);

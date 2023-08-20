@@ -5,6 +5,7 @@
 
 class Subject;
 
+// 3.Subscriber
 class Observer
 {
 public:
@@ -12,6 +13,7 @@ public:
     virtual void Update(Subject &) = 0;
 };
 
+// 1.Publisher
 class Subject
 {
 public:
@@ -36,6 +38,7 @@ private:
 class ClockTimer : public Subject
 {
 public:
+    // 2.A new event has occurred
     void SetTime(int hour, int minute, int second)
     {
         this->hour = hour;
@@ -55,6 +58,7 @@ private:
     int second;
 };
 
+// 4.Concrete Subscribers
 class DigitalClock : public Observer
 {
 public:
@@ -83,6 +87,7 @@ private:
     ClockTimer &subject;
 };
 
+// 4.Concrete Subscribers
 class AnalogClock : public Observer
 {
 public:

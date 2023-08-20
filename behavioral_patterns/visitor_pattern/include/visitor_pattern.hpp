@@ -9,6 +9,7 @@ class Account;
 class PassbookAccount;
 class CheckingAccount;
 
+// 3.Element
 class Account
 {
 public:
@@ -46,6 +47,7 @@ protected:
     int money_;
 };
 
+// 1.Visitor interface
 class Reporter
 {
 public:
@@ -53,6 +55,7 @@ public:
     virtual void visit_checking_account(CheckingAccount *acc) = 0;
 };
 
+// 4.Concrete Element
 class PassbookAccount : public Account
 {
 public:
@@ -85,6 +88,7 @@ public:
     }
 };
 
+// 2.Concrete Visitors
 class TotalSumReporter : public Reporter
 {
 public:
@@ -99,6 +103,7 @@ public:
     }
 };
 
+// 2.Concrete Visitors
 class HistoryReporter : public Reporter
 {
 public:

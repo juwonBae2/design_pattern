@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>
 
-// Button
+// Abstract Products
 class Button
 {
 public:
@@ -11,6 +11,7 @@ public:
     virtual ~Button() {}
 };
 
+// Concrete Products
 class WinButton : public Button
 {
 public:
@@ -23,7 +24,7 @@ public:
     void paint() const override;
 };
 
-// Check box (Application엔 아직 추가 x)
+// Abstract Products
 class Checkbox
 {
 public:
@@ -31,6 +32,7 @@ public:
     virtual ~Checkbox() {}
 };
 
+// Concrete Products
 class WinCheckbox : public Checkbox
 {
 public:
@@ -43,7 +45,7 @@ public:
     void paint() const override;
 };
 
-// GUI factory
+// Abstract Factory
 class GUIFactory
 {
 public:
@@ -52,6 +54,7 @@ public:
     virtual ~GUIFactory() {}
 };
 
+// Concrete Factories
 class WinFactory : public GUIFactory
 {
 public:
@@ -66,7 +69,7 @@ public:
     Checkbox *createCheckbox() const override;
 };
 
-// Application.. 코드 분리 해야 됨
+// TODO: Application.. 코드 분리 해야 됨
 class Application
 {
 private:

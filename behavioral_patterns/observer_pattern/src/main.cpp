@@ -8,4 +8,6 @@ int main()
     AnalogClock analogClock(timer);
 
     timer.SetTime(14, 41, 36);
+
+    timer.SetTime(14, 41, 45);
 }

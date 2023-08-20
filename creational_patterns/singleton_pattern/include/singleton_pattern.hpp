@@ -6,14 +6,6 @@
 
 class ConfigurationManager
 {
-protected:
-    ConfigurationManager(const std::string value) : value_(value) {}
-
-    static ConfigurationManager *instance_;
-    static std::mutex mutex_;
-
-    std::string value_;
-
 public:
     ConfigurationManager(ConfigurationManager &other) = delete;
     void operator=(const ConfigurationManager &) = delete;
@@ -29,4 +21,12 @@ public:
     {
         return value_;
     }
+
+private:
+    ConfigurationManager(const std::string value) : value_(value) {}
+
+    static ConfigurationManager *instance_;
+    static std::mutex mutex_;
+
+    std::string value_;
 };

@@ -47,7 +47,7 @@ void Invoker::doSomethingImportand()
     }
 
     fmt::print("Invoker: ...doing something really important...\n");
-    fmt::print("Invoker: Does anybody want something done after I finish?\n");
+    fmt::print("Invoker: Does anybody want something done after I finish?\n\n");
 
     if (this->on_finish_)
     {

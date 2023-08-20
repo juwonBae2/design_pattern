@@ -19,8 +19,24 @@ void ClientCode()
     delete it;
 }
 
+// iterator_pattern2
+
+class IntArray
+{
+private:
+    int *array;
+    int size;
+
+public:
+    IntArray(int *arr, int s) : array(arr), size(s) {}
+
+    int *begin() { return array; }
+    int *end() { return array + size; }
+};
+
 int main()
 {
+    // iterator_pattern1
     ClientCode();
 
     Container<Data> cont2;
@@ -37,6 +53,16 @@ int main()
     }
 
     delete it2;
+
+    // iterator_pattern2
+    std::cout << "\niterator_pattern2" << std::endl;
+    int arr[] = {10, 20, 30, 40, 50};
+    IntArray intArray(arr, 5);
+
+    for (int *it = intArray.begin(); it != intArray.end(); ++it)
+    {
+        std::cout << *it << " ";
+    }
 
     return 0;
 }
