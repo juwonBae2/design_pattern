@@ -52,7 +52,7 @@ public:
         m_data_.push_back(a);
     }
 
-    // 3.Concrete Collection
+    // 4.Concrete Collection
     Iterator<T, Container> *CreateIterator()
     {
         return new Iterator<T, Container>(this);
@@ -62,6 +62,7 @@ private:
     std::vector<T> m_data_;
 };
 
+// 단순히 Data 넣어주기 위한 class
 class Data
 {
 public:

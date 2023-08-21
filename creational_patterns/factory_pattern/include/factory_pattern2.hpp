@@ -3,7 +3,7 @@
 #include <unordered_map>
 #include <string>
 
-// Product
+// 1.Product
 class Beverage
 {
 public:
@@ -11,7 +11,7 @@ public:
     virtual void Prepare() = 0;
 };
 
-// Concrete product
+// 2.Concrete product
 class Coffee : public Beverage
 {
 public:
@@ -21,6 +21,7 @@ public:
     }
 };
 
+// 2.Concrete product
 class Tea : public Beverage
 {
 public:
@@ -30,7 +31,7 @@ public:
     }
 };
 
-// Creator (Beverage Factory)
+// 3.Creator (Beverage Factory)
 class BeverageFactory
 {
 public:
@@ -56,21 +57,21 @@ public:
     }
 };
 
-// Concrete creator
+// 4.Concrete creator
 class Store
 {
 public:
     Store()
     {
-        beverageFactories["Coffee"] = std::make_unique<CoffeeFactory>();
-        beverageFactories["Tea"] = std::make_unique<TeaFactory>();
+        beverage_factories_["Coffee"] = std::make_unique<CoffeeFactory>();
+        beverage_factories_["Tea"] = std::make_unique<TeaFactory>();
     }
 
     std::unique_ptr<Beverage> GetDrink(const std::string &kind)
     {
-        return beverageFactories[kind]->Make();
+        return beverage_factories_[kind]->Make();
     }
 
 private:
-    std::unordered_map<std::string, std::unique_ptr<BeverageFactory>> beverageFactories;
+    std::unordered_map<std::string, std::unique_ptr<BeverageFactory>> beverage_factories_;
 };

@@ -51,8 +51,9 @@ protected:
 class Reporter
 {
 public:
-    virtual void visit_passbook_account(PassbookAccount *acc) = 0;
-    virtual void visit_checking_account(CheckingAccount *acc) = 0;
+    virtual void visitPassbookAccount(PassbookAccount *acc) = 0;
+    // 사용 x
+    virtual void visitCheckingAccount(CheckingAccount *acc) = 0;
 };
 
 // 4.Concrete Element
@@ -63,7 +64,7 @@ public:
 
     void accept(Reporter &r) override
     {
-        r.visit_passbook_account(this);
+        r.visitPassbookAccount(this);
     }
 
     int get_total_sum() const override
@@ -72,6 +73,7 @@ public:
     }
 };
 
+// 사용 x
 class CheckingAccount : public Account
 {
 public:
@@ -79,7 +81,7 @@ public:
 
     void accept(Reporter &r) override
     {
-        r.visit_checking_account(this);
+        r.visitCheckingAccount(this);
     }
 
     int get_total_sum() const override
@@ -92,12 +94,13 @@ public:
 class TotalSumReporter : public Reporter
 {
 public:
-    void visit_passbook_account(PassbookAccount *acc) override
+    void visitPassbookAccount(PassbookAccount *acc) override
     {
         std::cout << acc->get_customer_name() << "Amount held by: " << acc->get_total_sum() << std::endl;
     }
 
-    void visit_checking_account(CheckingAccount *acc) override
+    // 사용 x
+    void visitCheckingAccount(CheckingAccount *acc) override
     {
         std::cout << acc->get_customer_name() << "Amount held by: " << acc->get_total_sum() << std::endl;
     }
@@ -107,7 +110,7 @@ public:
 class HistoryReporter : public Reporter
 {
 public:
-    void visit_passbook_account(PassbookAccount *acc) override
+    void visitPassbookAccount(PassbookAccount *acc) override
     {
         std::cout << acc->get_customer_name() << "'s deposit and withdrawal history" << std::endl;
         for (auto &elem : acc->get_history())
@@ -116,7 +119,8 @@ public:
         }
     }
 
-    void visit_checking_account(CheckingAccount *acc) override
+    // 사용 x
+    void visitCheckingAccount(CheckingAccount *acc) override
     {
         std::cout << acc->get_customer_name() << "'s deposit and withdrawal history" << std::endl;
         for (auto &elem : acc->get_history())

@@ -23,15 +23,15 @@ void ClientCode()
 
 class IntArray
 {
-private:
-    int *array;
-    int size;
-
 public:
-    IntArray(int *arr, int s) : array(arr), size(s) {}
+    IntArray(int *arr, int s) : array_(arr), size_(s) {}
 
-    int *begin() { return array; }
-    int *end() { return array + size; }
+    int *begin() { return array_; }
+    int *end() { return array_ + size_; }
+
+private:
+    int *array_;
+    int size_;
 };
 
 int main()
@@ -61,7 +61,7 @@ int main()
 
     for (int *it = intArray.begin(); it != intArray.end(); ++it)
     {
-        std::cout << *it << " ";
+        std::cout << *it << " " << std::endl;
     }
 
     return 0;

@@ -8,7 +8,7 @@ public:
     virtual ~RectangleInterface() {}
 };
 
-// 1.Client class
+// 1.Client
 class Client
 {
 public:
@@ -20,7 +20,7 @@ public:
     }
 };
 
-// 3.Service class
+// 3.Service
 class LegacyRectangle : public RectangleInterface
 {
 public:
@@ -37,7 +37,7 @@ private:
     int x1_, y1_, x2_, y2_;
 };
 
-// 4.Adapter class
+// 4.Adapter
 class RectangleAdapter : public RectangleInterface
 {
 public:

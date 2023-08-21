@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>
 
-// Abstract Products
+// 1.Abstract Products
 class Button
 {
 public:
@@ -11,20 +11,21 @@ public:
     virtual ~Button() {}
 };
 
-// Concrete Products
+// 2.Concrete Products
 class WinButton : public Button
 {
 public:
     void paint() const override;
 };
 
+// 2.Concrete Products
 class MacButton : public Button
 {
 public:
     void paint() const override;
 };
 
-// Abstract Products
+// 1.Abstract Products
 class Checkbox
 {
 public:
@@ -32,20 +33,21 @@ public:
     virtual ~Checkbox() {}
 };
 
-// Concrete Products
+// 2.Concrete Products
 class WinCheckbox : public Checkbox
 {
 public:
     void paint() const override;
 };
 
+// 2.Concrete Products
 class MacCheckbox : public Checkbox
 {
 public:
     void paint() const override;
 };
 
-// Abstract Factory
+// 3.Abstract Factory
 class GUIFactory
 {
 public:
@@ -54,7 +56,7 @@ public:
     virtual ~GUIFactory() {}
 };
 
-// Concrete Factories
+// 4.Concrete Factories
 class WinFactory : public GUIFactory
 {
 public:

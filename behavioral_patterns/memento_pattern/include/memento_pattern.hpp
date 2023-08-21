@@ -42,6 +42,29 @@ private:
 // 1.Originator
 class Originator
 {
+public:
+    Originator(std::string state) : state_(state)
+    {
+        std::cout << "Originator: My initial state is: " << this->state_ << "\n";
+    }
+
+    void DoSomething()
+    {
+        std::cout << "Originator: I'm doing something important.\n";
+        this->state_ = this->GenerateRandomString(30);
+        std::cout << "Originator: and my state has changed to: " << this->state_ << "\n";
+    }
+
+    Memento *Save()
+    {
+        return new ConcreteMemento(this->state_);
+    }
+
+    void Restore(Memento *memento)
+    {
+        this->state_ = memento->state();
+        std::cout << "Originator: My state has changed to: " << this->state_ << "\n";
+    }
 
 private:
     std::string state_;
@@ -66,39 +89,11 @@ private:
         }
         return random_string;
     }
-
-public:
-    Originator(std::string state) : state_(state)
-    {
-        std::cout << "Originator: My initial state is: " << this->state_ << "\n";
-    }
-
-    void DoSomething()
-    {
-        std::cout << "Originator: I'm doing something important.\n";
-        this->state_ = this->GenerateRandomString(30);
-        std::cout << "Originator: and my state has changed to: " << this->state_ << "\n";
-    }
-
-    Memento *Save()
-    {
-        return new ConcreteMemento(this->state_);
-    }
-
-    void Restore(Memento *memento)
-    {
-        this->state_ = memento->state();
-        std::cout << "Originator: My state has changed to: " << this->state_ << "\n";
-    }
 };
 
 // 3.Caretaker
 class Caretaker
 {
-private:
-    std::vector<Memento *> mementos_;
-    Originator *originator_;
-
 public:
     Caretaker(Originator *originator) : originator_(originator) {}
     ~Caretaker()
@@ -140,4 +135,8 @@ public:
             std::cout << memento->GetName() << "\n";
         }
     }
+
+private:
+    std::vector<Memento *> mementos_;
+    Originator *originator_;
 };
