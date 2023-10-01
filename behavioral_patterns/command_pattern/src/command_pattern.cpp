@@ -2,22 +2,26 @@
 
 void SimpleCommand::execute() const
 {
-    fmt::print("SimpleCommand: See, I can do simple things like printing ({})\n", this->pay_load_);
+    std::cout << "SimpleCommand: See, I can do simple things like printing ({})\n"
+              << this->pay_load_ << std::endl;
 }
 
 void Receiver::doSometing(const std::string &a)
 {
-    fmt::print("Receiver: Working on ({}.)\n", a);
+    std::cout << "Receiver: Working on ({}.)\n"
+              << a << std::endl;
 }
 
 void Receiver::doSomtingElse(const std::string &b)
 {
-    fmt::print("Receiver: Also working on ({}).\n", b);
+    std::cout << "Receiver: Also working on ({}).\n"
+              << b << std::endl;
 }
 
 void ComplexCommand::execute() const
 {
-    fmt::print("ComplexCommand: Complex stuff should be done by a reciver object. \n");
+    std::cout << "ComplexCommand: Complex stuff should be done by a reciver object. \n"
+              << std::endl;
     this->receiver_->doSometing(this->a_);
     this->receiver_->doSomtingElse(this->b_);
 }
@@ -40,14 +44,17 @@ void Invoker::setOnFinish(Command *command)
 
 void Invoker::doSomethingImportand()
 {
-    fmt::print("Invoker: Dose anybody want someting done before I begin? \n");
+    std::cout << "Invoker: Dose anybody want someting done before I begin? \n"
+              << std::endl;
     if (this->on_start_)
     {
         this->on_start_->execute();
     }
 
-    fmt::print("Invoker: ...doing something really important...\n");
-    fmt::print("Invoker: Does anybody want something done after I finish?\n\n");
+    std::cout << "Invoker: ...doing something really important...\n"
+              << std::endl;
+    std::cout << "Invoker: Does anybody want something done after I finish?\n\n"
+              << std::endl;
 
     if (this->on_finish_)
     {
